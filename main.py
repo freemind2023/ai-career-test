@@ -319,6 +319,25 @@ if st.session_state.get("show_result", False):
         st.info("🤝 You seem balanced between **BBA and B.Com**. You can explore both fields based on future goals or higher studies preference.")
 
     st.markdown("**Thanks for taking the test!** You’ll get more clarity as you grow — but you’ve already taken the right first step 🎯")
+    # Save final recommendation for report download
+if bba_percent > bcom_percent:
+    final_recommendation = "You are better aligned with BBA – great for careers in business, communication, and leadership."
+elif bcom_percent > bba_percent:
+    final_recommendation = "You are better aligned with B.Com – great for finance, accounting, and structured career paths."
+else:
+    final_recommendation = "You’re balanced between BBA and B.Com – either can work based on future goals."
+
+# Save in session for PDF/download
+st.session_state.final_report = final_recommendation
+
+# Call to Action (CTA)
+st.markdown("### 💬 Want Personalised Guidance?")
+if st.button("📞 Book a Free Career Call with Practical EduSkills"):
+    st.success("✅ Our counselor will contact you soon. You can also WhatsApp us at +91-XXXXXXXXXX.")
+
+st.markdown("---")
+st.caption("🔒 Your data is private and only used to guide your career.")
+
 
 
 
