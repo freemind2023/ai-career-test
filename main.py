@@ -232,6 +232,62 @@ if st.session_state.get("show_skills", False):
         st.session_state.bcom_score = bcom_score
         st.session_state.show_skills = False
         st.session_state.show_goals = True
+        # === SECTION 4: CAREER GOALS ===
+if st.session_state.get("show_goals", False):
+    st.markdown("### Final Section: Your Career Goals")
+    st.write("Let’s understand your long-term preferences and aspirations.")
+
+    # Load previous scores
+    bba_score = st.session_state.bba_score
+    bcom_score = st.session_state.bcom_score
+
+    # Question 16
+    q16 = st.radio("16. Which career path appeals to you more?",
+        ["Management, startups or marketing", "Finance, banking or auditing"])
+    if q16 == "Management, startups or marketing":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 17
+    q17 = st.radio("17. What do you value most in a career?",
+        ["Leadership opportunities", "Stability and structure"])
+    if q17 == "Leadership opportunities":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 18
+    q18 = st.radio("18. Where do you see yourself thriving?",
+        ["In a business team or startup", "In a corporate office or government job"])
+    if q18 == "In a business team or startup":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 19
+    q19 = st.radio("19. What would you prefer to pursue after graduation?",
+        ["MBA or entrepreneurship", "CA, CS or government exams"])
+    if q19 == "MBA or entrepreneurship":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 20
+    q20 = st.radio("20. What kind of job would make you happy?",
+        ["Creative and people-driven", "Structured and number-focused"])
+    if q20 == "Creative and people-driven":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    st.markdown("---")
+    if st.button("🎯 See My Result"):
+        st.session_state.bba_score = bba_score
+        st.session_state.bcom_score = bcom_score
+        st.session_state.show_goals = False
+        st.session_state.show_result = True
+
 
 
 
