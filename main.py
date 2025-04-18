@@ -211,7 +211,28 @@ if st.session_state.get("show_skills", False):
         bcom_score += 1
 
     # Question 14
-    q14 = st.radio("14.
+    q14 = st.radio("14. Your communication skills are...",
+        ["Very strong", "Average"])
+    if q14 == "Very strong":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 15
+    q15 = st.radio("15. When facing a challenge, you...",
+        ["Motivate people and act", "Make a step-by-step plan"])
+    if q15 == "Motivate people and act":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    st.markdown("---")
+    if st.button("👉 Final Section (Career Goals)"):
+        st.session_state.bba_score = bba_score
+        st.session_state.bcom_score = bcom_score
+        st.session_state.show_skills = False
+        st.session_state.show_goals = True
+
 
 
 
