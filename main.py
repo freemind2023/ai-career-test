@@ -177,6 +177,42 @@ if st.session_state.get("show_personality", False):
         st.session_state.bcom_score = bcom_score
         st.session_state.show_personality = False
         st.session_state.show_skills = True
+        # === SECTION 3: SKILLS ASSESSMENT ===
+if st.session_state.get("show_skills", False):
+    st.markdown("### Section 3: Your Skills")
+    st.write("Which of these skills best describe you?")
+
+    # Load scores from previous sections
+    bba_score = st.session_state.bba_score
+    bcom_score = st.session_state.bcom_score
+
+    # Question 11
+    q11 = st.radio("11. Which is your strong point?",
+        ["Convincing others", "Working with numbers"])
+    if q11 == "Convincing others":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 12
+    q12 = st.radio("12. You are better at...",
+        ["Team leadership", "Detailed analysis"])
+    if q12 == "Team leadership":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 13
+    q13 = st.radio("13. Which task do you enjoy more?",
+        ["Creating presentations", "Creating spreadsheets"])
+    if q13 == "Creating presentations":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 14
+    q14 = st.radio("14.
+
 
 
 
