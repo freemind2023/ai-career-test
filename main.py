@@ -1,38 +1,60 @@
 import streamlit as st
 
-# Set title & favicon on browser tab
+# Page title and layout
 st.set_page_config(
-    page_title="BBA vs BCom Career Test",
-    page_icon="🎓",  # This is the small icon on browser tab
+    page_title="Career Test – Practical EduSkills",
+    page_icon="🎓",
     layout="centered"
 )
 
-# Show your logo (we'll replace this link with your real logo later)
-st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/FreeMind_logo.svg/2560px-FreeMind_logo.svg.png", width=150)
+# === THEME COLOR STYLE ===
+st.markdown("""
+    <style>
+    body {
+        background-color: #1B1B2F;
+        color: white;
+    }
+    .stTextInput>div>div>input {
+        background-color: #2A2A40;
+        color: white;
+    }
+    .stTextInput label, .stTextArea label {
+        color: white;
+        font-weight: bold;
+    }
+    .stButton button {
+        background-color: #F2B233;
+        color: black;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+    }
+    .stSuccess {
+        color: #ABEBC6 !important;
+    }
+    .stWarning {
+        color: #F5B041 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-# Main title
+# === MAIN INTERFACE ===
 st.title("BBA vs BCom Career Test")
+st.markdown("Welcome to **Practical EduSkills Career Guidance Platform** 👋")
+st.write("Let’s begin by knowing who you are.")
 
-# Subheading
-st.markdown("Welcome to **Free Mind Career Guidance Platform** 👋")
-st.write("Let's begin by knowing who you are.")
-
-# Separator
 st.markdown("---")
 
-# Form for student details
-with st.form(key='student_info'):
-    name = st.text_input("Full Name")
-    phone = st.text_input("Mobile Number")
-    city = st.text_input("Your City or Location")
-    
-    # Submit button
-    start_button = st.form_submit_button(label="🚀 Start Test")
+# === Student Info Form ===
+with st.form(key='student_form'):
+    name = st.text_input("👤 Full Name")
+    phone = st.text_input("📞 Mobile Number")
+    city = st.text_input("🏙️ City / Location")
+    start_test = st.form_submit_button("🚀 Start Test")
 
-# When button is clicked
-if start_button:
+# === On Submission ===
+if start_test:
     if name and phone and city:
-        st.success(f"Hi {name}, you’re ready to begin your test!")
-        # This is where we will show the test in Day 3
+        st.success(f"Hi {name}! You’re ready to begin the test.")
     else:
-        st.warning("Please fill in all fields before continuing.")
+        st.warning("Please fill in all fields to continue.")
