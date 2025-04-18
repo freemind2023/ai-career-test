@@ -287,6 +287,39 @@ if st.session_state.get("show_goals", False):
         st.session_state.bcom_score = bcom_score
         st.session_state.show_goals = False
         st.session_state.show_result = True
+        # === FINAL RESULT SECTION ===
+if st.session_state.get("show_result", False):
+    st.markdown("## 🎓 Your Career Test Result")
+    st.write(f"Hello **{st.session_state.user_name}**, based on your answers, here’s what we suggest:")
+
+    # Get final scores
+    bba_score = st.session_state.bba_score
+    bcom_score = st.session_state.bcom_score
+
+    # Calculate percentages
+    total = bba_score + bcom_score
+    bba_percent = round((bba_score / total) * 100, 1)
+    bcom_percent = round((bcom_score / total) * 100, 1)
+
+    # Show score bars
+    st.markdown(f"**BBA Suitability:** {bba_percent}%")
+    st.progress(bba_percent / 100)
+
+    st.markdown(f"**B.Com Suitability:** {bcom_percent}%")
+    st.progress(bcom_percent / 100)
+
+    st.markdown("---")
+
+    # Suggestion logic
+    if bba_percent > bcom_percent:
+        st.success("✅ You are better aligned with **BBA** – your personality and interests suggest you're a natural manager, communicator, or entrepreneur.")
+    elif bcom_percent > bba_percent:
+        st.success("✅ You are better aligned with **B.Com** – your strengths show a deep interest in finance, accuracy, and structured systems.")
+    else:
+        st.info("🤝 You seem balanced between **BBA and B.Com**. You can explore both fields based on future goals or higher studies preference.")
+
+    st.markdown("**Thanks for taking the test!** You’ll get more clarity as you grow — but you’ve already taken the right first step 🎯")
+
 
 
 
