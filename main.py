@@ -119,3 +119,64 @@ if st.session_state.show_interest:
         st.session_state.bcom_score = bcom_score
         st.success("Great! Moving to next section...")
         # Next section to be added on Day 4
+    if st.button("👉 Next Section (Personality)"):
+        st.session_state.bba_score = bba_score
+        st.session_state.bcom_score = bcom_score
+        st.session_state.show_interest = False
+        st.session_state.show_personality = True
+# === SECTION 2: PERSONALITY TRAITS ===
+if st.session_state.get("show_personality", False):
+    st.markdown("### Section 2: Your Personality")
+    st.write("Let’s understand your natural working style.")
+
+    # Load previous scores
+    bba_score = st.session_state.bba_score
+    bcom_score = st.session_state.bcom_score
+
+    # Question 6
+    q6 = st.radio("6. You’re more comfortable...",
+        ["Taking charge in a group", "Working alone with accuracy"])
+    if q6 == "Taking charge in a group":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 7
+    q7 = st.radio("7. How do you usually make decisions?",
+        ["Quickly and confidently", "Carefully after research"])
+    if q7 == "Quickly and confidently":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 8
+    q8 = st.radio("8. Which describes you more?",
+        ["Talkative and energetic", "Quiet and detail-focused"])
+    if q8 == "Talkative and energetic":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 9
+    q9 = st.radio("9. You prefer to work in...",
+        ["Dynamic teams", "Structured environments"])
+    if q9 == "Dynamic teams":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    # Question 10
+    q10 = st.radio("10. How do you handle tasks?",
+        ["Multi-task fast", "Focus on one task perfectly"])
+    if q10 == "Multi-task fast":
+        bba_score += 1
+    else:
+        bcom_score += 1
+
+    st.markdown("---")
+    if st.button("👉 Next Section (Skills)"):
+        st.session_state.bba_score = bba_score
+        st.session_state.bcom_score = bcom_score
+        st.session_state.show_personality = False
+        st.session_state.show_skills = True
+
