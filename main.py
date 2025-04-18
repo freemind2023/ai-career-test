@@ -119,11 +119,9 @@ if st.session_state.show_interest:
         st.session_state.bcom_score = bcom_score
         st.success("Great! Moving to next section...")
         # Next section to be added on Day 4
-    if st.button("👉 Next Section (Personality)"):
-        st.session_state.bba_score = bba_score
-        st.session_state.bcom_score = bcom_score
         st.session_state.show_interest = False
         st.session_state.show_personality = True
+
 # === SECTION 2: PERSONALITY TRAITS ===
 if st.session_state.get("show_personality", False):
     st.markdown("### Section 2: Your Personality")
@@ -179,4 +177,26 @@ if st.session_state.get("show_personality", False):
         st.session_state.bcom_score = bcom_score
         st.session_state.show_personality = False
         st.session_state.show_skills = True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
